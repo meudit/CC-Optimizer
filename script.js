@@ -26,7 +26,7 @@ function loadCards() {
       bankName: 'HDFC Bank',
       cardName: 'Regalia Gold',
       spendPerPoint: 150,
-      pointsEarned: 25,
+      pointsEarned: 4,
       pointValue: 1,
       color: '#3B82F6'
     }];
@@ -479,3 +479,4 @@ function calculateOptimalPoints() {
 function hideResults() {
   document.getElementById('resultsSection').classList.add('hidden');
 }
+
