@@ -23,6 +23,8 @@ A modern, minimal web application to optimize your credit card points usage and 
 - **Dark Mode**: Seamless dark/light theme switching with persistent preference
 - **Mobile Responsive**: Optimized for all screen sizes
 - **Minimal Flat Icons**: Clean SVG icons throughout
+- **PWA Support**: Install as a native app on any device
+- **Offline Mode**: Works without internet connection after first load
 
 ### Technical
 - **Offline Storage**: All data saved locally in your browser (LocalStorage)
@@ -82,7 +84,27 @@ php -S localhost:8000
 
 Then visit `http://localhost:8000`
 
-### Option 3: Deploy to GitHub Pages
+### Option 3: Install as PWA
+
+This app is a Progressive Web App! You can install it on your device:
+
+**On Desktop (Chrome/Edge):**
+1. Visit the live site or run locally
+2. Click the install icon in the address bar
+3. Or go to Settings → Install app
+
+**On Mobile (iOS/Android):**
+1. Open in Safari (iOS) or Chrome (Android)
+2. Tap Share → Add to Home Screen
+3. The app will work offline!
+
+**Features:**
+- ✅ Works offline after first load
+- ✅ Install on home screen
+- ✅ Native app-like experience
+- ✅ Fast loading with service worker caching
+
+### Option 4: Deploy to GitHub Pages
 
 1. Fork or clone this repository
 2. Create a `.nojekyll` file in the root (already included)
