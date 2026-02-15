@@ -407,7 +407,7 @@ header {
 
 .multiplier-buttons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr) 1.5fr;
   gap: var(--space-xs);
 }
 
@@ -433,6 +433,62 @@ header {
   border-color: var(--border-active);
   background: var(--border-active);
   color: white;
+}
+
+.custom-multiplier {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.custom-multiplier-input {
+  width: 100%;
+  padding: var(--space-sm);
+  padding-right: 1.75rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+  transition: all var(--transition);
+}
+
+.custom-multiplier-input:focus {
+  border-color: var(--border-active);
+  background: var(--bg-secondary);
+}
+
+.custom-multiplier-input.active {
+  border-color: var(--border-active);
+  background: var(--border-active);
+  color: white;
+}
+
+.custom-multiplier-input::placeholder {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.multiplier-suffix {
+  position: absolute;
+  right: var(--space-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.custom-multiplier-input.active+.multiplier-suffix {
+  color: white;
+}
+
+.custom-multiplier-input:focus+.multiplier-suffix {
+  opacity: 0;
 }
 
 /* ===== Results Section ===== */

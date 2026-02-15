@@ -81,6 +81,22 @@ function attachEventListeners() {
     });
   });
 
+  // Custom multiplier input
+  const customInput = document.getElementById('customMultiplier');
+  customInput.addEventListener('input', () => {
+    const value = parseFloat(customInput.value);
+    if (value && value > 0) {
+      selectMultiplier(value, true);
+    }
+  });
+
+  customInput.addEventListener('focus', () => {
+    // Deactivate preset buttons when focusing custom input
+    document.querySelectorAll('.multiplier-btn').forEach(btn => {
+      btn.classList.remove('active');
+    });
+  });
+
   // Color picker
   document.querySelectorAll('.color-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -325,17 +341,30 @@ function selectColor(color) {
 }
 
 // ===== Multiplier Selection =====
-function selectMultiplier(multiplier) {
+function selectMultiplier(multiplier, isCustom = false) {
   currentMultiplier = multiplier;
 
-  // Update UI
-  document.querySelectorAll('.multiplier-btn').forEach(btn => {
-    if (parseFloat(btn.dataset.multiplier) === multiplier) {
-      btn.classList.add('active');
-    } else {
+  const customInput = document.getElementById('customMultiplier');
+
+  if (isCustom) {
+    // Custom multiplier - highlight input
+    customInput.classList.add('active');
+    document.querySelectorAll('.multiplier-btn').forEach(btn => {
       btn.classList.remove('active');
-    }
-  });
+    });
+  } else {
+    // Preset multiplier - highlight button and clear custom input
+    customInput.classList.remove('active');
+    customInput.value = '';
+
+    document.querySelectorAll('.multiplier-btn').forEach(btn => {
+      if (parseFloat(btn.dataset.multiplier) === multiplier) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
 
   // Hide results to force recalculation
   hideResults();
