@@ -1,196 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Optimize your credit card points usage to maximize rewards and savings">
   <meta name="keywords" content="credit card, points, rewards, optimizer, calculator">
   <meta name="author" content="Credit Card Points Optimizer">
-  
+
   <!-- SEO -->
-  <title>Credit Card Points Optimizer - Maximize Your Rewards</title>
-  
+  <title>The Optimizer - Maximize Your Credit Card Points</title>
+
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
-  
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💳</text></svg>">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <!-- Header -->
   <header>
     <div class="container">
       <div class="header-content">
-        <div class="logo">
-          <span class="logo-icon">💳</span>
-          <h1>Points Optimizer</h1>
+        <div>
+          <h1 class="main-title">The Optimizer</h1>
+          <p class="subtitle">Optimize your credit card points usage</p>
         </div>
-        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+        <div class="header-actions">
+          <button id="manageCardsBtn" class="btn-text">
+            <svg class="icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="1"></circle>
+              <circle cx="12" cy="5" r="1"></circle>
+              <circle cx="12" cy="19" r="1"></circle>
+            </svg>
+          </button>
+          <button id="themeToggle" class="btn-icon-header" aria-label="Toggle theme">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- Main Content -->
   <main class="container">
-    <div class="grid">
-      <!-- Credit Cards Section -->
-      <section class="card">
-        <div class="card-header">
-          <h2 class="card-title">My Credit Cards</h2>
-          <button id="addCardBtn" class="btn btn-primary btn-small">
-            <span>➕</span>
-            <span>Add Card</span>
-          </button>
-        </div>
-        
-        <div id="cardList" class="card-list">
-          <!-- Cards will be rendered here by JavaScript -->
-        </div>
-      </section>
+    <!-- Card Selector -->
+    <section class="card-selector-section">
+      <h2 class="section-label">SELECT CARD</h2>
+      <div id="cardCarousel" class="card-carousel">
+        <!-- Cards will be rendered here -->
+      </div>
+    </section>
 
-      <!-- Calculator Section -->
-      <section class="card">
-        <div class="card-header">
-          <h2 class="card-title">Calculate Optimal Points</h2>
+    <!-- Calculator -->
+    <section class="calculator-section">
+      <h2 class="section-label">ITEM PRICE</h2>
+      <div class="price-input-wrapper">
+        <span class="currency-symbol">₹</span>
+        <input type="number" id="itemPrice" class="price-input" placeholder="0" min="0" step="1">
+      </div>
+
+      <div class="multiplier-section">
+        <h3 class="section-label" style="margin-top: var(--space-md);">POINTS MULTIPLIER</h3>
+        <div class="multiplier-buttons">
+          <button class="multiplier-btn active" data-multiplier="1">1x</button>
+          <button class="multiplier-btn" data-multiplier="2">2x</button>
+          <button class="multiplier-btn" data-multiplier="5">5x</button>
+          <button class="multiplier-btn" data-multiplier="10">10x</button>
         </div>
-        
-        <form id="calculatorForm" onsubmit="return false;">
-          <div class="form-group">
-            <label for="itemPrice">Item Price (₹)</label>
-            <input 
-              type="number" 
-              id="itemPrice" 
-              placeholder="Enter item price (e.g., 6000)"
-              min="0"
-              step="0.01"
-              required
-            >
-          </div>
-          
-          <div style="padding: var(--space-md); background: var(--bg-secondary); border-radius: var(--radius-md); font-size: 0.875rem; color: var(--text-secondary);">
-            <strong>How it works:</strong><br>
-            The calculator finds the optimal points to use so that you earn back equal or more points than you spend, maximizing your rewards efficiency.
-          </div>
-        </form>
-        
-        <!-- Results -->
-        <div id="results" class="results hidden">
-          <!-- Results will be rendered here by JavaScript -->
-        </div>
-      </section>
-    </div>
-    
-    <!-- Info Section -->
-    <section class="card">
-      <h3 class="mb-md">💡 Understanding the Optimization</h3>
-      <div style="display: grid; gap: var(--space-md);">
-        <div>
-          <h4 style="margin-bottom: var(--space-xs); color: var(--accent-primary);">Points Earning</h4>
-          <p style="color: var(--text-secondary); font-size: 0.875rem;">
-            Points are calculated based on your card's reward structure. The amount is always rounded down to the nearest spend threshold.
-          </p>
-        </div>
-        
-        <div>
-          <h4 style="margin-bottom: var(--space-xs); color: var(--accent-primary);">Optimal Usage</h4>
-          <p style="color: var(--text-secondary); font-size: 0.875rem;">
-            The optimizer finds the perfect balance where you use points to reduce the price, but still earn back the same or more points from the purchase.
-          </p>
-        </div>
-        
-        <div>
-          <h4 style="margin-bottom: var(--space-xs); color: var(--accent-primary);">Example</h4>
-          <p style="color: var(--text-secondary); font-size: 0.875rem;">
-            For a ₹6,000 item with a card earning 25 points per ₹150: Use 850 points to pay ₹5,150, and earn back exactly 850 points. Perfect optimization! 🎯
-          </p>
-        </div>
+      </div>
+    </section>
+
+    <!-- CTA Button -->
+    <button id="calculateBtn" class="btn-cta">
+      CALCULATE OPTIMAL POINTS
+      <svg class="icon" viewBox="0 0 24 24">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+
+    <!-- Results (Hidden initially) -->
+    <section id="resultsSection" class="results-section hidden">
+      <div class="results-card">
+        <h3 class="results-title">Optimization Results</h3>
+        <div id="resultsContent"></div>
       </div>
     </section>
   </main>
 
-  <!-- Card Modal -->
-  <div id="cardModal" class="modal-overlay hidden">
-    <div class="modal">
+  <!-- Manage Cards Modal -->
+  <div id="manageCardsModal" class="modal-overlay hidden">
+    <div class="modal modal-large">
       <div class="modal-header">
-        <h3 id="cardModalTitle">Add Credit Card</h3>
-        <button class="btn-icon" onclick="closeCardModal()" aria-label="Close modal">✖️</button>
+        <button class="btn-icon" onclick="closeManageCardsModal()" aria-label="Back">
+          <svg class="icon" viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <div>
+          <h2 class="modal-title">Manage Cards</h2>
+          <p class="modal-subtitle">Add and manage your credit cards</p>
+        </div>
+        <button class="btn-icon" onclick="closeManageCardsModal()" aria-label="Close">
+          <svg class="icon" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
       </div>
-      
-      <form id="cardForm" onsubmit="return false;">
-        <div class="form-group">
-          <label for="cardName">Card Name</label>
-          <input 
-            type="text" 
-            id="cardName" 
-            placeholder="e.g., HDFC Regalia"
-            required
-          >
+
+      <div class="modal-body">
+        <!-- Add/Edit Card Form -->
+        <div id="cardFormSection" class="card-form-section">
+          <div class="form-header">
+            <h3 id="formTitle">NEW CARD</h3>
+            <button id="cancelFormBtn" class="btn-icon hidden" onclick="cancelCardForm()">
+              <svg class="icon" viewBox="0 0 24 24">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <form id="cardForm" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bankName">BANK NAME</label>
+                <input type="text" id="bankName" placeholder="HDFC Bank" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cardName">CARD NAME</label>
+                <input type="text" id="cardName" placeholder="Regalia Gold" required>
+              </div>
+            </div>
+
+            <div class="form-row form-row-2">
+              <div class="form-group">
+                <label for="pointsEarned">POINTS EARNED</label>
+                <input type="number" id="pointsEarned" placeholder="25" min="0.01" step="0.01" required>
+              </div>
+              <div class="form-group">
+                <label for="spendPerPoint">PER ₹ SPEND</label>
+                <input type="number" id="spendPerPoint" placeholder="150" min="0.01" step="0.01" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="pointValue">POINT VALUE (₹)</label>
+              <input type="number" id="pointValue" placeholder="1" min="0.01" step="0.01" required>
+              <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem;">
+                Rupee value of each point when redeemed
+              </small>
+            </div>
+
+            <div class="form-group">
+              <label>COLOR</label>
+              <div class="color-grid" id="colorGrid">
+                <button type="button" class="color-btn" data-color="#3B82F6" style="background: #3B82F6;"></button>
+                <button type="button" class="color-btn" data-color="#EF4444" style="background: #EF4444;"></button>
+                <button type="button" class="color-btn" data-color="#10B981" style="background: #10B981;"></button>
+                <button type="button" class="color-btn" data-color="#F59E0B" style="background: #F59E0B;"></button>
+                <button type="button" class="color-btn" data-color="#8B5CF6" style="background: #8B5CF6;"></button>
+                <button type="button" class="color-btn" data-color="#EC4899" style="background: #EC4899;"></button>
+                <button type="button" class="color-btn" data-color="#06B6D4" style="background: #06B6D4;"></button>
+                <button type="button" class="color-btn" data-color="#22C55E" style="background: #22C55E;"></button>
+                <button type="button" class="color-btn" data-color="#F97316" style="background: #F97316;"></button>
+                <button type="button" class="color-btn" data-color="#A855F7" style="background: #A855F7;"></button>
+              </div>
+            </div>
+
+            <button type="button" id="saveCardBtn" class="btn-save">
+              <svg class="icon" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              SAVE CARD
+            </button>
+          </form>
         </div>
-        
-        <div class="form-group">
-          <label for="spendPerPoint">Spend Required (₹)</label>
-          <input 
-            type="number" 
-            id="spendPerPoint" 
-            placeholder="e.g., 150"
-            min="0.01"
-            step="0.01"
-            required
-          >
-          <small style="color: var(--text-muted); font-size: 0.75rem;">
-            Amount you need to spend to earn points
-          </small>
+
+        <!-- Cards List -->
+        <div id="cardsListSection" class="cards-list-section">
+          <div id="cardsList">
+            <!-- Existing cards will be rendered here -->
+          </div>
+          <p class="empty-message" id="emptyMessage">No cards added yet. Add your first card above.</p>
         </div>
-        
-        <div class="form-group">
-          <label for="pointsEarned">Points Earned</label>
-          <input 
-            type="number" 
-            id="pointsEarned" 
-            placeholder="e.g., 25"
-            min="0.01"
-            step="0.01"
-            required
-          >
-          <small style="color: var(--text-muted); font-size: 0.75rem;">
-            Points earned per spend threshold
-          </small>
-        </div>
-        
-        <div class="form-group">
-          <label for="pointValue">Point Value (₹)</label>
-          <input 
-            type="number" 
-            id="pointValue" 
-            placeholder="e.g., 1"
-            min="0.01"
-            step="0.01"
-            required
-          >
-          <small style="color: var(--text-muted); font-size: 0.75rem;">
-            Rupee value of each point when redeemed
-          </small>
-        </div>
-        
-        <div class="modal-actions">
-          <button type="button" id="cancelCardBtn" class="btn btn-secondary">Cancel</button>
-          <button type="button" id="saveCardBtn" class="btn btn-primary">Save Card</button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer style="text-align: center; padding: var(--space-xl) var(--space-md); color: var(--text-muted); font-size: 0.875rem;">
+  <footer>
     <p>Made with ❤️ for smart credit card users</p>
   </footer>
 
   <!-- Scripts -->
   <script src="script.js"></script>
 </body>
+
 </html>
