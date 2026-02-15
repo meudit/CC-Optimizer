@@ -479,4 +479,3 @@ function calculateOptimalPoints() {
 function hideResults() {
   document.getElementById('resultsSection').classList.add('hidden');
 }
-

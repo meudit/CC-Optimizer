@@ -60,6 +60,7 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -67,8 +68,10 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
-  min-height: 100vh;
-  transition: background var(--transition), color var(--transition);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  transition: background-color var(--transition), color var(--transition);
 }
 
 /* ===== Typography ===== */
@@ -101,6 +104,7 @@ body {
   max-width: 600px;
   margin: 0 auto;
   padding: var(--space-md);
+  overflow-x: hidden;
 }
 
 header {
@@ -443,8 +447,8 @@ header {
 
 .custom-multiplier-input {
   width: 100%;
-  padding: var(--space-sm);
-  padding-right: 1.75rem;
+  padding: var(--space-sm) var(--space-md);
+  padding-right: 2rem;
   border: 2px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--bg-card);
@@ -452,7 +456,7 @@ header {
   font-family: var(--font-heading);
   font-size: 0.875rem;
   font-weight: 700;
-  text-align: center;
+  text-align: left;
   outline: none;
   transition: all var(--transition);
 }
@@ -468,6 +472,10 @@ header {
   color: white;
 }
 
+.custom-multiplier-input.active::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 .custom-multiplier-input::placeholder {
   color: var(--text-muted);
   font-weight: 600;
@@ -475,20 +483,23 @@ header {
 
 .multiplier-suffix {
   position: absolute;
-  right: var(--space-sm);
-  color: var(--text-secondary);
+  right: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
   font-family: var(--font-heading);
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
   pointer-events: none;
+  transition: all var(--transition);
 }
 
 .custom-multiplier-input.active+.multiplier-suffix {
-  color: white;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .custom-multiplier-input:focus+.multiplier-suffix {
-  opacity: 0;
+  opacity: 0.3;
 }
 
 /* ===== Results Section ===== */
