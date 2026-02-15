@@ -9,48 +9,61 @@ A modern, minimal web application to optimize your credit card points usage and 
 
 ## 🌟 Features
 
+### Core Functionality
 - **Smart Optimization**: Automatically calculates the optimal points to use for any purchase
-- **Multiple Cards**: Support for unlimited credit cards with different reward structures
 - **Perfect Balance**: Find solutions where points earned equals points spent
-- **Modern UI**: Beautiful, minimal design with glassmorphism effects
-- **Dark Mode**: Seamless dark/light theme switching
-- **Mobile Responsive**: Works perfectly on all devices
-- **Offline Storage**: All data saved locally in your browser
+- **Multiple Cards**: Support for unlimited credit cards with different reward structures
+- **Custom Point Values**: Set different redemption values per card (e.g., 0.25, 0.5, 1 rupee per point)
+- **Points Multiplier**: Apply 2x, 5x, or 10x multipliers for bonus categories (dining, travel, etc.)
+
+### User Experience
+- **Modern UI**: Clean, minimal design with angular elements and tight spacing
+- **Horizontal Card Carousel**: Swipe through your cards with smooth scrolling
+- **Inline Card Management**: Add new cards directly from the carousel
+- **Dark Mode**: Seamless dark/light theme switching with persistent preference
+- **Mobile Responsive**: Optimized for all screen sizes
+- **Minimal Flat Icons**: Clean SVG icons throughout
+
+### Technical
+- **Offline Storage**: All data saved locally in your browser (LocalStorage)
 - **No Backend**: Pure client-side application, completely private
+- **Zero Dependencies**: Built with vanilla HTML, CSS, and JavaScript
+- **Fast & Lightweight**: No frameworks, instant loading
 
 ## 🚀 Live Demo
 
 Visit the live application: [Credit Card Points Optimizer](https://yourusername.github.io/credit-card-optimizer/)
 
-## 📱 Screenshots
-
-> **Note**: After opening the application, you can take screenshots of the light and dark modes to add here. Simply open `index.html` in your browser, test the features, and capture screenshots to showcase the design.
-
 ## 🎯 How It Works
 
 The optimizer uses a smart algorithm to find the perfect points usage:
 
-1. **Input**: Enter the item price you want to purchase
-2. **Calculate**: The app finds how many points to redeem
-3. **Optimize**: Ensures you earn back equal or more points than you use
-4. **Save**: Get the best value from your credit card rewards
+1. **Select Card**: Choose from your saved credit cards
+2. **Set Multiplier**: Apply bonus multipliers (1x, 2x, 5x, 10x) for special categories
+3. **Enter Price**: Input the item price you want to purchase
+4. **Calculate**: The app finds how many points to redeem
+5. **Optimize**: Ensures you earn back equal or more points than you use
 
 ### Example
 
-For a ₹6,000 item with a card earning 25 points per ₹150:
-- **Use**: 850 points
-- **Pay**: ₹5,150
-- **Earn Back**: 850 points
-- **Result**: Perfect optimization! 🎯
+**Scenario**: ₹6,000 purchase with HDFC Regalia Gold
+- **Card**: 25 points per ₹150, 1 point = ₹1
+- **Multiplier**: 5x (dining category)
+- **Optimal Solution**:
+  - Use: 850 points
+  - Pay: ₹5,150
+  - Earn Back: 850 points (with 5x multiplier)
+  - Result: Perfect optimization! 🎯
 
 ## 🛠️ Technology Stack
 
 - **HTML5**: Semantic markup for accessibility
-- **CSS3**: Modern design with CSS variables, glassmorphism, and animations
+- **CSS3**: Modern design with CSS variables, minimal styling, and smooth animations
 - **Vanilla JavaScript**: No frameworks, pure performance
 - **LocalStorage**: Client-side data persistence
+- **Google Fonts**: Outfit (body) and Space Grotesk (headings)
 
-## 📦 Installation
+## 📦 Installation & Deployment
 
 ### Option 1: Use Directly
 Simply open `index.html` in your browser. No installation needed!
@@ -71,56 +84,99 @@ Then visit `http://localhost:8000`
 
 ### Option 3: Deploy to GitHub Pages
 
-1. Fork this repository
-2. Go to Settings → Pages
-3. Select `main` branch as source
-4. Your site will be live at `https://yourusername.github.io/credit-card-optimizer/`
+1. Fork or clone this repository
+2. Create a `.nojekyll` file in the root (already included)
+3. Push to GitHub
+4. Go to Settings → Pages
+5. Select `main` branch as source
+6. Your site will be live at `https://yourusername.github.io/credit-card-optimizer/`
 
-## 💡 Usage
+**Important**: The `.nojekyll` file is required to prevent GitHub Pages from using Jekyll, which can interfere with CSS/JS loading.
+
+## 💡 Usage Guide
 
 ### Adding a Credit Card
 
-1. Click the "Add Card" button
-2. Enter card details:
-   - **Card Name**: Your card identifier
-   - **Spend Required**: Amount needed to earn points (e.g., ₹150)
+1. Click the "Add Card" button in the carousel or header menu
+2. Fill in the card details:
+   - **Bank Name**: e.g., "HDFC Bank"
+   - **Card Name**: e.g., "Regalia Gold"
    - **Points Earned**: Points earned per spend threshold (e.g., 25)
-   - **Point Value**: Rupee value of each point (e.g., ₹1)
+   - **Per ₹ Spend**: Amount needed to earn points (e.g., 150)
+   - **Point Value (₹)**: Rupee value of each point when redeemed (e.g., 1, 0.5, 0.25)
+   - **Color**: Choose from 10 vibrant colors to identify your card
 3. Click "Save Card"
 
 ### Calculating Optimal Points
 
-1. Select your credit card from the list
-2. Enter the item price
-3. View the optimization results instantly
-4. See exactly how many points to use for maximum efficiency
+1. Select your credit card from the horizontal carousel
+2. Choose a multiplier (1x, 2x, 5x, 10x) based on the category
+3. Enter the item price
+4. Click "Calculate Optimal Points"
+5. View detailed results showing:
+   - Points to use
+   - Final price after redemption
+   - Points earned back (with multiplier)
+   - Net points change
+   - Perfect solution indicator (if applicable)
 
 ### Managing Cards
 
-- **Edit**: Click the ✏️ icon to modify card details
-- **Delete**: Click the 🗑️ icon to remove a card
-- **Select**: Click on any card to use it for calculations
+- **Edit**: Click the edit icon in the "Manage Cards" modal
+- **Delete**: Click the delete icon (requires at least one card)
+- **Select**: Click on any card in the carousel to use it
+- **Add**: Click the dashed "Add Card" button in the carousel
 
 ## 🎨 Design Philosophy
 
-- **Minimal**: Clean interface with plenty of white space
-- **Modern**: Glassmorphism, gradients, and smooth animations
-- **Accessible**: Proper contrast ratios and keyboard navigation
+- **Minimal & Clean**: Reduced spacing, angular corners, compact layout
+- **Modern**: Horizontal scrolling, vibrant colors, smooth transitions
+- **Accessible**: Proper contrast ratios, semantic HTML, keyboard navigation
 - **Responsive**: Mobile-first design that scales beautifully
-- **Premium**: Curated color palette and typography
+- **Premium**: Curated color palette and professional typography
 
-## 🔒 Privacy
+### Typography
+- **Body**: Outfit - Modern, rounded, highly readable
+- **Headings**: Space Grotesk - Distinctive geometric design
 
-All your data is stored locally in your browser using LocalStorage. Nothing is sent to any server. Your credit card information never leaves your device.
+### Color System
+10 vibrant card colors: Blue, Red, Green, Orange, Purple, Pink, Cyan, Lime, Orange-Red, Violet
+
+## 🔒 Privacy & Security
+
+- **100% Local**: All data stored in browser LocalStorage
+- **No Tracking**: No analytics, cookies, or external requests
+- **No Backend**: Pure client-side application
+- **Your Data**: Never leaves your device
+
+## 🧮 Algorithm Details
+
+The optimization algorithm:
+1. Iterates through possible point redemption amounts
+2. Calculates points earned for each scenario (with multiplier)
+3. Finds the minimum difference where `points_earned >= points_used`
+4. Returns the optimal solution with the best balance
+
+```javascript
+pointsEarned = floor(finalPrice / spendPerPoint) * pointsPerSpend * multiplier
+```
+
+## 📱 Browser Compatibility
+
+- ✅ Chrome/Edge (latest)
+- ✅ Firefox (latest)
+- ✅ Safari (latest)
+- ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
 
-- Report bugs
+- Report bugs via Issues
 - Suggest new features
 - Submit pull requests
 - Improve documentation
+- Share your use cases
 
 ## 📄 License
 
@@ -131,11 +187,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Inspired by the need to maximize credit card rewards
 - Built with modern web technologies
 - Designed for real-world usage
+- Community feedback and suggestions
 
-## 📧 Contact
+## 📧 Support
 
-Have questions or suggestions? Feel free to open an issue!
+Have questions or suggestions? Feel free to open an issue on GitHub!
 
 ---
 
-Made with ❤️ for smart credit card users
+**Made with ❤️ for smart credit card users**
+
+*Optimize smarter, save more, earn better rewards!*
