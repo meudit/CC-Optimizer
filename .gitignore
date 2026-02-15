@@ -1,0 +1,22 @@
+# .gitignore for Credit Card Points Optimizer
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: screenshots folder if you add it later
+# screenshots/
